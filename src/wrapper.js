@@ -1,16 +1,16 @@
 // Import vue component
-import component from './money-format.vue';
+import component from './money.vue';
 
 // Declare install function executed by Vue.use()
 export function install(Vue) {
-	if (install.installed) return;
+  if (install.installed) return;
 	install.installed = true;
-	Vue.component('MoneyFormat', component);
+	Vue.component('Money', component);
 }
 
 // Create module definition for Vue.use()
 const plugin = {
-	install,
+  install,
 };
 
 // Auto-install when vue is found (eg. in browser via <script> tag)
