@@ -1,16 +1,27 @@
 <template>
-  <div class=money_format>
-    {{formatMoney(value, locale, currencyCode, 
-      subunitsValue,
-      subunitsToUnit,
-      hideSubunits,
-      supplementalPrecision)}}
-  </div>
+  <component :is="tag">
+    {{
+      formatMoney(
+        value,
+        locale,
+        currencyCode, {
+          subunitsValue,
+          subunitsToUnit,
+          hideSubunits,
+          supplementalPrecision
+        }
+      )
+    }}
+  </component>
 </template>
 <script>
   export default {
     props: {
       value: Number,
+      tag: {
+        type: String,
+        default: 'div'
+      },
       locale: {
         type: String,
         default: 'en'
@@ -53,11 +64,13 @@
       /////////////////////////////////////////////////////////////////////
       formatMoney: function(value, 
                             locale, 
-                            currencyCode, 
-                            subunitsValue, 
-                            subunitsToUnit,
-                            hideSubunits, 
-                            supplementalPrecision) {
+                            currencyCode,
+                            {
+                              subunitsValue, 
+                              subunitsToUnit,
+                              hideSubunits, 
+                              supplementalPrecision
+                            }) {
         let ret = 0;
         if (Number.isFinite(value)) {
           try {
