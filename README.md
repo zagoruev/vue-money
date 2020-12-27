@@ -1,6 +1,6 @@
-# vue-money-format
+# vue-money
 
-A Vue component that formats currency.
+A Vue component that formats currency. Heavilly inspired by [egomolka/vue-money-format](https://github.com/egomolka/vue-money-format)
 
 This uses Intl.NumberFormat: 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat
@@ -33,21 +33,21 @@ yarn add vue-money-format
 ```html
 <template>
   <div>
-    <money-format :value="cost" 
+    <money :value="cost" 
       :locale='en' 
       :currency-code='USD' 
       :subunits-value=true 
       :hide-subunits=true>
-    </money-format>
+    </money>
   </div>
 </template>
 
 <script>
-  import MoneyFormat from 'vue-money-format'
+  import { Money } from 'vue-money'
 
   export default {
     components: {
-    'money-format': MoneyFormat
+      Money
     },
 
     data () {
@@ -62,6 +62,7 @@ yarn add vue-money-format
 
 ### Input options
 
+- tag: HTML-tag to render component. Defaults to 'div'
 - value: Numerical input (only required input)
 - locale: Language and country information, such as 'en' or 'en-US'. Defaults to 'en'
 - currency-code: ISO 4217 3-character alpha code in upper or lower case. Defaults to 'USD'
